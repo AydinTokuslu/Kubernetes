@@ -3,12 +3,12 @@ kind: Service
 metadata:
   name: db
   labels:
-    name: db-service
-    app: demo-voting-app
+    name: mysql-service
+    app: phonebook-app
 spec:
   ports:
   - port: 5432
     targetPort: 5432
   selector:
-     name: postgres-pod
-     app: demo-voting-app
+     name: mysql-pod
+     app: phonebook-app

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-server-pod-deploy
+  labels:
+    name: web-server-pod-deploy
+    app: phonebook-app
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      name: web-server-pod
+      app: phonebook-app
+  template:
+    metadata:
+      name: web-server-pod
+      labels:
+        name: web-server-pod
+        app: phonebook-app
+    spec:
+      containers:
+      - name: web-server
+        image: aydintokuslu/phonebook_webserver:2.0
+        ports:
+            - containerPort: 80
