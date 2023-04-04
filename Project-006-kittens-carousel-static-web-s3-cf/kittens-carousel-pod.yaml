@@ -5,12 +5,11 @@ metadata:
   labels:
     name: kittens-carousel-pod
     app: kittens-carousel-app
-
 spec:
   volumes:
     - name: kittens-carousel-pv-storage
       persistentVolumeClaim:
-        claimName: kittens-carousel-pv-vol
+        claimName: kittens-carousel-pv-claim
   containers:
     - name: kittens-carousel-pod
       image: aydintokuslu/kittens_carousel:2.0

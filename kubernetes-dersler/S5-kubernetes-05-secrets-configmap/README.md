@@ -160,7 +160,7 @@ kubectl apply -f ./secret.yaml
 ```bash
 secret "mysecret" created
 ```
-
+  
 ### Decoding a Secret
 
 - Secrets can be retrieved by running kubectl get secret. For example, you can view the Secret created in the previous section by running the following command:

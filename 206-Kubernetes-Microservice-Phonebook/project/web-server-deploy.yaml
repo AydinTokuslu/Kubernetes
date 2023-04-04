@@ -19,7 +19,7 @@ spec:
         app: phonebook-app
     spec:
       containers:
-      - name: web-server
+      - name: web-server-pod
         image: aydintokuslu/phonebook_webserver:5.0
         ports:
             - containerPort: 80
