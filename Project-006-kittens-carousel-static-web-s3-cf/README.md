@@ -1,4 +1,4 @@
-# Project-006 : Kittens Carousel Static Website deployed on AWS Cloudfront, S3 and Route 53 using Cloudformation
+# Project-006 : Kittens Carousel Static Website deployed on Kubernetes
 
 ## Description
 
@@ -11,7 +11,7 @@ Kittens Carousel is a static website application deployed on AWS Simple Storage 
 - Your company has recently started a web application project that will serve as an attraction point for pet lovers. As a first step of the project, you have deployed the app on EC2 instance and showed that design is good and working, thus you can go to next step. Developers in your team have prepared kittens carousel application and pushed necessary files for the project to the repository on Github.
 
 - Your task is to deploy the application as static web page in the production environment. Thus, you need to deploy the web application using the `index.html` and an images given within the `static-web` folder. Note the followings for your web application.
-  
+
   - User should face first with `index.html` when web app started.
 
   - Application should be deployed on AWS S3 as static website.
@@ -48,7 +48,7 @@ Kittens Carousel is a static website application deployed on AWS Simple Storage 
 
         - Newly created ACM Certificate should be used for securing connections.
 
-    - Within Route 53 a record set should be configured to send requests to the Cloudfront distribution.  
+    - Within Route 53 a record set should be configured to send requests to the Cloudfront distribution.
 
     - After the stack created, following outputs should be given;
 
@@ -118,7 +118,7 @@ Kittens Carousel is a static website application deployed on AWS Simple Storage 
 - use git commands (push, pull, commit, add etc.) and Github as Version Control System.
 
 ## Steps to Solution
-  
+
 - Step 1: Download or clone project definition from `clarusway` repo on Github
 
 - Step 2: Create project folder for local public repo on your pc
