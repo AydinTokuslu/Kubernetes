@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
       - name: result-server
-        image: aydintokuslu/phonebook_resultserver:2.0
+        image: aydintokuslu/phonebook_resultserver:3.0
         ports:
             - containerPort: 80

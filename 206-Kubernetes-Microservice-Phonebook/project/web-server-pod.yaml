@@ -8,6 +8,6 @@ metadata:
 spec:
   containers:
   - name: web-server
-    image: aydintokuslu/phonebook_webserver:2.0
+    image: aydintokuslu/phonebook_webserver:5.0
     ports:
          - containerPort: 80

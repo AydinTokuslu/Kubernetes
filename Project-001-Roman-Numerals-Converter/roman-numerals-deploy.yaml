@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roman-numerals-deploy
+  labels:
+    name: roman-numerals-deploy
+    app: roman-numerals-app
+spec:
+  replicas: 3
+  selector: 
+    matchLabels:
+      name: roman-numerals-pod
+      app: roman-numerals-app
+  template:
+    metadata:
+      name: roman-numerals-pod
+      labels:
+        name: roman-numerals-pod
+        app: roman-numerals-app
+    spec:
+      containers:
+      - name: roman-numerals
+        image: aydintokuslu/roman_numerals:2.0
+        ports:
+            - containerPort: 80
