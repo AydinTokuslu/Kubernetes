@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: result-server-pod-deploy
+  namespace: app
   labels:
     name: result-server-pod-deploy
     app: phonebook-app
@@ -14,6 +15,7 @@ spec:
   template:
     metadata:
       name: result-server-pod
+      namespace: app
       labels:
         name: result-server-pod
         app: phonebook-app

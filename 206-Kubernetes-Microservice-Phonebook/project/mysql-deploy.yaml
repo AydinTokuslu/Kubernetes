@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   #name: mysql-server-pod-deploy
   name: database
+  namespace: app
   labels:
     name: mysql-server-pod-deploy
     app: phonebook-app
@@ -15,6 +16,7 @@ spec:
   template:
     metadata:
       name: mysql-pod
+      namespace: app
       labels:
         name: mysql-pod
         app: phonebook-app
