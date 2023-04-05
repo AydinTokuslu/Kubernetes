@@ -20,10 +20,9 @@ At the end of the this hands-on training, students will be able to;
 
 ## Part 1 - Setting up the Kubernetes Cluster
 
-- Launch a Kubernetes Cluster of Ubuntu 20.04 with two nodes (one master, one worker) using the [Cloudformation Template to Create Kubernetes Cluster](../kubernetes-02-basic-operations/cfn-template-to-create-k8s-cluster.yml). *Note: Once the master node up and running, worker node automatically joins the cluster.*
+- Launch a Kubernetes Cluster of Ubuntu 20.04 with two nodes (one master, one worker) using the [Cloudformation Template to Create Kubernetes Cluster](../kubernetes-02-basic-operations/cfn-template-to-create-k8s-cluster.yml). _Note: Once the master node up and running, worker node automatically joins the cluster._
 
->*Note: If you have problem with kubernetes cluster, you can use this link for lesson.*
->https://killercoda.com/playgrounds
+> _Note: If you have problem with kubernetes cluster, you can use this link for lesson._ >https://killercoda.com/playgrounds
 
 - Check if Kubernetes is running and nodes are ready.
 
@@ -97,35 +96,35 @@ cd service-lessons
 - Create `yaml` file named `web-flask.yaml` and explain fields of it.
 
 ```yaml
-apiVersion: apps/v1 
-kind: Deployment 
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: web-flask-deploy
 spec:
-  replicas: 3 
-  selector:  
+  replicas: 3
+  selector:
     matchLabels:
       app: web-flask
-  minReadySeconds: 10 
+  minReadySeconds: 10
   strategy:
-    type: RollingUpdate 
+    type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 1 
-      maxSurge: 1 
-  template: 
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
     metadata:
       labels:
         app: web-flask
     spec:
       containers:
-      - name: web-flask-pod
-        image: clarusway/cw_web_flask1
-        ports:
-        - containerPort: 5000
+        - name: web-flask-pod
+          image: clarusway/cw_web_flask1
+          ports:
+            - containerPort: 5000
 ```
 
 - Create the web-flask Deployment.
-  
+
 ```bash
 kubectl apply -f web-flask.yaml
 ```
@@ -158,9 +157,9 @@ metadata:
   name: forcurl
 spec:
   containers:
-  - name: forcurl
-    image: clarusway/forping
-    imagePullPolicy: IfNotPresent
+    - name: forcurl
+      image: clarusway/forping
+      imagePullPolicy: IfNotPresent
   restartPolicy: Always
 ```
 
@@ -213,20 +212,20 @@ kubectl explain svc
 
 ```yaml
 apiVersion: v1
-kind: Service   
+kind: Service
 metadata:
   name: web-flask-svc
   labels:
     app: web-flask
 spec:
-  type: ClusterIP  
+  type: ClusterIP
   ports:
-  - port: 3000  
-    targetPort: 5000
+    - port: 3000
+      targetPort: 5000
   selector:
     app: web-flask
 ```
-  
+
 ```bash
 kubectl apply -f web-svc.yaml
 ```
@@ -257,7 +256,7 @@ Annotations:       <none>
 Selector:          app=web-flask
 Type:              ClusterIP
 IP Family Policy:  SingleStack
-IP Families:       IPv4 
+IP Families:       IPv4
 IP:                10.105.60.230
 IPs:               10.105.60.230
 Port:              <unset>  3000/TCP
@@ -266,12 +265,13 @@ Endpoints:         172.16.180.5:5000,172.16.180.6:5000
 Session Affinity:  None
 Events:            <none>
 ```
-- Go to the pod and ping the deployment which has service with ClusterIP and see the ip address of service. 
+
+- Go to the pod and ping the deployment which has service with ClusterIP and see the ip address of service.
 
 ```
 kubectl exec -it forcurl -- sh
 / # curl <IP of service web-flask-svc>:3000
-/ # ping web-flask-svc 
+/ # ping web-flask-svc
 / # curl web-flask-svc:3000
 ```
 
@@ -283,16 +283,16 @@ kubectl exec -it forcurl -- sh
 
 ```yaml
 apiVersion: v1
-kind: Service   
+kind: Service
 metadata:
   name: web-flask-svc
   labels:
     app: web-flask
 spec:
-  type: NodePort  
+  type: NodePort
   ports:
-  - port: 3000  
-    targetPort: 5000
+    - port: 3000
+      targetPort: 5000
   selector:
     app: web-flask
 ```
@@ -312,33 +312,33 @@ kubectl get svc -o wide
 ```
 kubectl exec -it forcurl -- sh
 / # curl <IP of service web-flask-svc>:3000
-/ # ping web-flask-svc 
+/ # ping web-flask-svc
 / # curl web-flask-svc:3000
 ```
 
-- We can visit `http://<public-node-ip>:<node-port>` and access the application. Pay attention to load balancing. 
-Note: Do not forget to open the Port `<node-port>` in the security group of your node instance.
+- We can visit `http://<public-node-ip>:<node-port>` and access the application. Pay attention to load balancing.
+  Note: Do not forget to open the Port `<node-port>` in the security group of your node instance.
 
-- We can also define NodePort via adding nodePort number to service yaml file. Check the below. 
+- We can also define NodePort via adding nodePort number to service yaml file. Check the below.
 
 ```yaml
 apiVersion: v1
-kind: Service   
+kind: Service
 metadata:
   name: web-flask-svc
   labels:
     app: web-flask
 spec:
-  type: NodePort 
+  type: NodePort
   ports:
-  - nodePort: 30036  
-    port: 3000        
-    targetPort: 5000
+    - nodePort: 30036
+      port: 3000
+      targetPort: 5000
   selector:
     env: front-end
 ```
 
-- Configure the web-flask-svc service  again via apply command.
+- Configure the web-flask-svc service again via apply command.
 
 ```bash
 kubectl apply -f web-svc.yaml
@@ -350,7 +350,7 @@ kubectl apply -f web-svc.yaml
 kubectl get svc -o wide
 ```
 
-- We can visit `http://<public-node-ip>:30036` and access the application. 
+- We can visit `http://<public-node-ip>:30036` and access the application.
 
 ### Endpoints
 
@@ -381,13 +381,12 @@ kubectl scale deploy web-flask-deploy --replicas=10
 - List the `Endpoints` and explain that the Service has an associated `Endpoint` object with an always-up-to-date list of Pods matching the label selector.
 
 ```bash
-kubectl get ep -o wide 
+kubectl get ep -o wide
 ```
 
 > Open a browser on any node and explain the `loadbalancing` via browser. (Pay attention to the host ip and node name and note that `host ips` and `endpoints` are same)
 >
 > http://[public-node-ip]:[node-port]
-
 
 ### To connect a service from different namespace
 
@@ -395,7 +394,7 @@ kubectl get ep -o wide
 
 `web-svc.my-namespace.svc.cluster.local`
 
-- Services within the same Namespace find other Services just by their names. 
+- Services within the same Namespace find other Services just by their names.
 
 - Let's understand this issue with an example.
 
@@ -438,10 +437,10 @@ spec:
         app: web-flask
     spec:
       containers:
-      - name: web-flask-pod
-        image: clarusway/cw_web_flask1
-        ports:
-        - containerPort: 5000
+        - name: web-flask-pod
+          image: clarusway/cw_web_flask1
+          ports:
+            - containerPort: 5000
 ```
 
 - Update the `web-svc.yaml` file as below.
@@ -457,9 +456,9 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 3000
-    targetPort: 5000
-    nodePort: 30036
+    - port: 3000
+      targetPort: 5000
+      nodePort: 30036
   selector:
     app: web-flask
 ```
@@ -471,11 +470,13 @@ kubectl apply -f .
 ```
 
 - show all namespaces
+
 ```bash
 kubectl get ns
 ```
 
 - Lets see the all objects within demo namespace and default namespace
+
 ```bash
 kubectl get deploy -n demo
 kubectl get pod -n demo
