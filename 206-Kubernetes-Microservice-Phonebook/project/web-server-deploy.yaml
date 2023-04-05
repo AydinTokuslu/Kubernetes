@@ -25,3 +25,19 @@ spec:
         image: aydintokuslu/phonebook_webserver:5.0
         ports:
             - containerPort: 80
+        env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "P123456p"
+            - name:  MYSQL_DATABASE
+              value: "phonebook"
+            - name: MYSQL_USER
+              value: "admin"
+            - name: MYSQL_PASSWORD
+              value: "awsdevops13"
+        resources:
+            limits:
+              memory: 500Mi
+              cpu: 100m
+            requests:
+              memory: 250Mi
+              cpu: 80m

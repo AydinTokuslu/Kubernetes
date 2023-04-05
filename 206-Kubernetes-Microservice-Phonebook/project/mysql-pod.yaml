@@ -14,7 +14,7 @@ spec:
     - name: MYSQL_ROOT_PASSWORD
       value: "P123456p"
     - name:  MYSQL_DATABASE
-      value: "clarusway_phonebook"
+      value: "phonebook"
     - name: MYSQL_USER
       value: "admin"
     - name: MYSQL_PASSWORD
