@@ -2,9 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: result-server
-  namespace: app
   labels:
-    name: result-server-service
+    name: result-server
     app: phonebook-app
 spec:
   ports:

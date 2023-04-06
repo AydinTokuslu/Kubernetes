@@ -4,11 +4,9 @@ metadata:
   name: mysql-service
   labels:
     name: mysql-service
-    app: phonebook-app
 spec:
   ports:
   - port: 3306
     targetPort: 3306
   selector:
-     name: mysql-pod
-     app: phonebook-app
+    name: mysql-pod

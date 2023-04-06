@@ -2,12 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-server-pod-deploy
-  namespace: app
   labels:
     name: web-server-pod-deploy
     app: phonebook-app
 spec:
-  replicas: 3
+  replicas: 1
   selector: 
     matchLabels:
       name: web-server-pod
@@ -15,25 +14,29 @@ spec:
   template:
     metadata:
       name: web-server-pod
-      namespace: app
       labels:
         name: web-server-pod
         app: phonebook-app
     spec:
       containers:
       - name: web-server-pod
-        image: aydintokuslu/phonebook_webserver:5.0
+        image: aydintokuslu/phonebook_webserver:6.0
         ports:
             - containerPort: 80
         env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: "P123456p"
-            - name:  MYSQL_DATABASE
-              value: "phonebook"
-            - name: MYSQL_USER
-              value: "admin"
-            - name: MYSQL_PASSWORD
-              value: "awsdevops13"
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-password
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-root-password
+        envFrom:
+          - configMapRef:
+              name: servers-configmap
         resources:
             limits:
               memory: 500Mi
@@ -41,3 +44,5 @@ spec:
             requests:
               memory: 250Mi
               cpu: 80m
+
+# -v $PWD/data
