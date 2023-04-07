@@ -11,4 +11,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/c/Users/aydin/Desktop/Kubernetes/Project-001-Roman-Numerals-Converter"
+    path: "/mnt/data"

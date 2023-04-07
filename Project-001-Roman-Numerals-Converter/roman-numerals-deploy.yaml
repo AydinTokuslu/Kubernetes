@@ -24,7 +24,7 @@ spec:
             claimName: roman-numerals-pv-claim
       containers:
         - name: roman-numerals
-          image: aydintokuslu/roman_numerals:2.0
+          image: aydintokuslu/roman_numerals:3.0
           ports:
             - containerPort: 80
           volumeMounts:
