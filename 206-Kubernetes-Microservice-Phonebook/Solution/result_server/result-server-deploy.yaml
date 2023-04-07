@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-server-pod-deploy
+  name: result-server-pod-deploy
   labels:
-    name: web-server-pod-deploy
+    name: result-server-pod-deploy
     app: phonebook-app
 spec:
   replicas: 1
   selector: 
     matchLabels:
-      name: web-server-pod
+      name: result-server-pod
       app: phonebook-app
   template:
     metadata:
-      name: web-server-pod
+      name: result-server-pod
       labels:
-        name: web-server-pod
+        name: result-server-pod
         app: phonebook-app
     spec:
       containers:
-      - name: web-server-pod
-        image: aydintokuslu/phonebook_webserver:6.0
+      - name: result-server
+        image: aydintokuslu/phonebook_resultserver:5.0
         ports:
             - containerPort: 80
         env:
@@ -44,5 +44,3 @@ spec:
             requests:
               memory: 250Mi
               cpu: 80m
-
-# -v $PWD/data

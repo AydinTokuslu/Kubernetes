@@ -1,4 +1,4 @@
-# Project-206: Microservice Architecture for Phonebook Web Application (Python Flask) with MySQL using Kubernetes.
+# Project-206: Microservice Architecture for Phonebook Web Application (Python Flask) with MySQL using Kubernetes Microservice Architecture.
 
 ## Description
 
@@ -6,9 +6,9 @@ Phonebook Microservice Web Application aims to create a web application with MyS
 
 ## Problem Statement
 
-![Project_206](Microservice_structure.png) 
+![Project_206](Microservice_structure.png)
 
-- Your team has started working on a project to create a `Phonebook` Application as Web Service.  
+- Your team has started working on a project to create a `Phonebook` Application as Web Service.
 
 - Software Developers in your team have already developed first version of `Phonebook` application. They have designed a database to keep phonebook records with following fields.
 
@@ -20,13 +20,13 @@ Phonebook Microservice Web Application aims to create a web application with MyS
 
 - Your teammates also created the RESTful web service as given in [Phonebook API](./Phonebook-api.py) using Python Flask Framework. Below table shows how the HTTP methods are designed to affect the given resources identified by URIs.
 
-| HTTP Method  | Action | Example|
-| --- | --- | --- |
-| `GET`     |   Read the records | http://[ec2-hostname]:30001/  |
-| `POST`    |   Create a new record | http://[ec2-hostname]:30001/add  |
-| `POST`    |   Update an existing record | http://[ec2-hostname]:30001/update  |
-| `POST`    |   Delete an existing record | http://[ec2-hostname]:30001/delete  |
-| `POST`    |   Delete a resource | http://[ec2-hostname]:30002  |
+| HTTP Method | Action                    | Example                            |
+| ----------- | ------------------------- | ---------------------------------- |
+| `GET`       | Read the records          | http://[ec2-hostname]:30001/       |
+| `POST`      | Create a new record       | http://[ec2-hostname]:30001/add    |
+| `POST`      | Update an existing record | http://[ec2-hostname]:30001/update |
+| `POST`      | Delete an existing record | http://[ec2-hostname]:30001/delete |
+| `POST`      | Delete a resource         | http://[ec2-hostname]:30002        |
 
 - As a cloud engineer, you're requested to deploy the app on an AWS EC2 Instance using Docker and Kubernetes to showcase your project. In order to achieve this goal, you need to;
 
@@ -44,57 +44,62 @@ Phonebook Microservice Web Application aims to create a web application with MyS
 
   1.1. CREATE/DELETE/UPDATE DEPLOYMENT
 
-    - Deployment definition file should configure create/delete/update operations with one or more replicas.
-    - Expose the container port on `port 80`.
-    - Deployment definition file should set the proper Environmental Variables for the db connection.
-    - Passwords should be protected by kubernetes-secrets.
-    - Database Host's value should be defined in the deployment using Kubernetes-ConfigMap.
+  - Deployment definition file should configure create/delete/update operations with one or more replicas.
+  - Expose the container port on `port 80`.
+  - Deployment definition file should set the proper Environmental Variables for the db connection.
+  - Passwords should be protected by kubernetes-secrets.
+  - Database Host's value should be defined in the deployment using Kubernetes-ConfigMap.
 
   1.2. CREATE/DELETE/UPDATE SERVICE
-    - This service should be attached to `CREATE/DELETE/UPDATE Deployment`.
-    - Service type should be NodePort published on `port:30001`.
-    - Expose the port and target port on port `80`.
+
+  - This service should be attached to `CREATE/DELETE/UPDATE Deployment`.
+  - Service type should be NodePort published on `port:30001`.
+  - Expose the port and target port on port `80`.
 
   2.1. SEARCH DEPLOYMENT
 
-    - Deployment definition file should configure search operations with one or more replicas.
-    - Expose the container port on `port 80`.
-    - Deployment definition file should set the proper Environmental Variables for the db connection.
-    - Passwords should be protected by kubernetes-secrets.
-    - Database Host's value should be defined in the deployment using Kubernetes-ConfigMap.
+  - Deployment definition file should configure search operations with one or more replicas.
+  - Expose the container port on `port 80`.
+  - Deployment definition file should set the proper Environmental Variables for the db connection.
+  - Passwords should be protected by kubernetes-secrets.
+  - Database Host's value should be defined in the deployment using Kubernetes-ConfigMap.
 
   2.2. SEARCH SERVICE
-    - This service should be attached to `SEARCH Deployment`.
-    - Service type should be NodePort published on `port:30002`.
-    - Expose the port and target port on port `80`.
+
+  - This service should be attached to `SEARCH Deployment`.
+  - Service type should be NodePort published on `port:30002`.
+  - Expose the port and target port on port `80`.
 
   3.1. DATABASE DEPLOYMENT
-    - Deployment should use mysql:5.7 image pulled from Docker hub.
-    - Expose the container port on `port 3306`.
-    - Deployment definition file should set the proper Environmental Variables.
-    - Persistent volume should be attached to this deployment.
-    - Passwords should be protected by kubernetes-secrets.
+
+  - Deployment should use mysql:5.7 image pulled from Docker hub.
+  - Expose the container port on `port 3306`.
+  - Deployment definition file should set the proper Environmental Variables.
+  - Persistent volume should be attached to this deployment.
+  - Passwords should be protected by kubernetes-secrets.
 
   3.2. DATABASE SERVICE
-    - This service should be attached to `DATABASE Deployment`.
-    - Service type should be ClusterIP.
-    - Expose the port and target port on port `3306`.
+
+  - This service should be attached to `DATABASE Deployment`.
+  - Service type should be ClusterIP.
+  - Expose the port and target port on port `3306`.
 
   3.3. Persistent Volume
-    - Volume capacity should be set as `20Gi`.
-    - Access Mode should be set as `ReadWriteOnce`.
-    - Host path should be set as `/mnt/data`.
-    - To be able to attache this volume, a persistent volume claim should be defined.
-  
+
+  - Volume capacity should be set as `20Gi`.
+  - Access Mode should be set as `ReadWriteOnce`.
+  - Host path should be set as `/mnt/data`.
+  - To be able to attache this volume, a persistent volume claim should be defined.
+
   4.1. Kubernetes Environment
-  - Assign two EC2 machines as the project's infrastructure. One should be configured as the master and the other should be configured as the worker. 
+
+  - Assign two EC2 machines as the project's infrastructure. One should be configured as the master and the other should be configured as the worker.
 
   - Minimum `t2.medium` instance type should be selected.
 
-  - The Web Application should be accessible via web browser from anywhere. 
+  - The Web Application should be accessible via web browser from anywhere.
 
   - The Application files should be downloaded from Github repo and deployed on EC2 Instance using user data script within cloudformation template.
-
 
 ## Project Skeleton
 
@@ -105,22 +110,22 @@ Initial files:
 
 1. README.md                      # Given to the students (Definition of the project)
 2. Image_for_web_server           # Given to the students (Image components of Python Flask Web API for Update/delete/add record)
-  - app.py      
-  - requirements.txt              
+  - app.py
+  - requirements.txt
   - templates
     - index.html
     - add-update.html
     - delete.html
 3. image_for_result_server        # Given to the students (Image components of Python Flask Web API for search record)
-  - app.py           
-  - requirements.txt              
+  - app.py
+  - requirements.txt
   - templates
     - index.html
 
 Requested files:
 
 ADD/DELETE/UPDATE DEPLOYMENT AND SERVICE
-1. Dockerfile                     # To be delivered by students 
+1. Dockerfile                     # To be delivered by students
 2. web_server_deployment.yml      # To be delivered by students
 3. web_server_service.yaml        # To be delivered by students
 
@@ -179,7 +184,7 @@ SECRETS AND CONFIGMAP
 - build a Kubernetes infrastructure using Cloudformation.
 
 ## Steps to Solution
-  
+
 - Step 1: Download or clone project definition from `clarusway` repo on Github
 
 - Step 2: Create your Kubernetes environment with cloudformation template
@@ -189,7 +194,6 @@ SECRETS AND CONFIGMAP
 - Step 4: Prepare search, delete/update/create and mysql parts.
 
 - Step 5: Deploy your work on Kubernetes to showcase your application within your team.
-
 
 ## Resources
 
