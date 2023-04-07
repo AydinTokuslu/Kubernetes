@@ -1,4 +1,4 @@
-# Project-001 : Roman Numerals Converter Application (Python Flask) deployed on Kubernetes
+# Project-001 : Roman Numerals Converter Application (Python Flask) deployed using Kubernetes Microservices Architecture.
 
 ## Description
 
