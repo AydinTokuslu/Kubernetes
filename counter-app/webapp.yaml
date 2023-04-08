@@ -20,8 +20,8 @@ spec:
         ports:
         - containerPort: 3000
         env:
-          - name: REDIS_ARGS
-            value: "--requirepass redis-stack"
+          - name: host
+            value: redis-service
         resources:
             limits:
               memory: 500Mi

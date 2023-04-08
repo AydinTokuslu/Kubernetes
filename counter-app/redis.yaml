@@ -19,12 +19,12 @@ spec:
         image: redis:7.0-alpine
         ports:
         - containerPort: 6379
+        env:
+          - name: redis-service
+            value: redis
         volumeMounts:
           - name: redis-db
             mountPath: /usr/local/etc/redis
-        env:
-          - name: REDIS_ARGS
-            value: "--requirepass redis-stack"
       volumes:
         - name: redis-db
           persistentVolumeClaim:
