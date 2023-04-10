@@ -25,7 +25,7 @@ spec:
             nodeSelectorTerms:
             - matchExpressions:
               - key: size
-                operator: In # NotIn, Exists and DoesNotExist
+                operator: NotIn # In, NotIn, Exists and DoesNotExist
                 values:
                 - large
                 - medium
