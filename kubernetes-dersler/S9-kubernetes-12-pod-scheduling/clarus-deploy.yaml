@@ -21,11 +21,12 @@ spec:
         - containerPort: 80
       affinity:
         nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
+          preferredDuringSchedulingIgnoredDuringExecution:   # This field is changed.
+          - weight: 10                                        # This field is changed.         
+            preference:                                      # This field is changed.   
+              matchExpressions:
               - key: size
-                operator: In # In, NotIn, Exists and DoesNotExist
+                operator: In
                 values:
                 - large
                 - medium
