@@ -68,7 +68,7 @@ mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/
 
 - (Optional) Add the $HOME/bin path to your shell initialization file so that it is configured when you open a shell.
 
-```bash
+```bash ******************************************
 echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 ```
 
