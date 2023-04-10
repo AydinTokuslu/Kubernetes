@@ -19,5 +19,13 @@ spec:
         image: nginx
         ports:
         - containerPort: 80
-      nodeSelector:         # This part is added.
-        size: large
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: size
+                operator: In # NotIn, Exists and DoesNotExist
+                values:
+                - large
+                - medium
