@@ -11,7 +11,7 @@ spec:
   selector:
     app: wordpress
     tier: mysql
-  clusterIP: None
+
 ---
 apiVersion:  apps/v1
 kind: Deployment
@@ -20,6 +20,7 @@ metadata:
   labels:
     app: wordpress
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: wordpress
