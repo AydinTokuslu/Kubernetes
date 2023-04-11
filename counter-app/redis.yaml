@@ -16,19 +16,19 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redis:7.0-alpine
+        image: redis:6-alpine
         ports:
         - containerPort: 6379
         env:
           - name: redis-service
             value: redis
-        volumeMounts:
-          - name: redis-db
-            mountPath: /usr/local/etc/redis
-      volumes:
-        - name: redis-db
-          persistentVolumeClaim:
-            claimName: redis-pvc
+      #   volumeMounts:
+      #     - name: redis-db
+      #       mountPath: /usr/local/etc/redis
+      # volumes:
+      #   - name: redis-db
+      #     persistentVolumeClaim:
+      #       claimName: redis-pvc
 --- 
 apiVersion: v1
 kind: Service

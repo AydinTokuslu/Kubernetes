@@ -20,8 +20,11 @@ spec:
         ports:
         - containerPort: 3000
         env:
-          - name: host
-            value: redis-service
+          - name: "host"
+            valueFrom:
+              configMapKeyRef:
+                name: redis-configmap
+                key: database_url
         resources:
             limits:
               memory: 500Mi
