@@ -7,6 +7,7 @@ metadata:
 spec:
   ports:
     - port: 80
+      targetPort: 80
       nodePort: 31004
   selector:
     app: wordpress
@@ -16,14 +17,14 @@ spec:
 
 
 ---
-apiVersion: apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1 
 kind: Deployment
 metadata:
   name: wordpress
   labels:
     app: wordpress
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: wordpress
@@ -37,7 +38,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress
+      - image: wordpress:4.8-apache
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST

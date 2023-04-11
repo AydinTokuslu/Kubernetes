@@ -7,12 +7,13 @@ metadata:
 spec:
   ports:
     - port: 3306
+      targetPort: 3306
   selector:
     app: wordpress
     tier: mysql
   clusterIP: None
 ---
-apiVersion:  apps/v1beta2 # for versions before 1.9.0 use apps/v1beta2
+apiVersion:  apps/v1
 kind: Deployment
 metadata:
   name: mysql

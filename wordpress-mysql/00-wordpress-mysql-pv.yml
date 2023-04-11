@@ -10,10 +10,9 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
-  nfs:
-    server: nfs01
-    # Exported path of your NFS server
-    path: "/html"
+  storageClassName: manual
+  hostPath:
+    path: "/var/www/html"
 
 ---
 apiVersion: v1
@@ -28,7 +27,6 @@ spec:
     storage: 1Gi
   accessModes:
     - ReadWriteMany
-  nfs:
-    server: nfs01
-    # Exported path of your NFS server
-    path: "/mysql"
+  storageClassName: manual
+  hostPath:
+    path: "/var/lib/mysql"
