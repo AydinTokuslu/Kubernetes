@@ -53,6 +53,7 @@ metadata:
   name: resultserver-service
 spec:
   type: NodePort
+  #type: LoadBalancer
   selector:
     app: resultserver
   ports:

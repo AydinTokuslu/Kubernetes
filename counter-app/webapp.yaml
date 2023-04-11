@@ -19,12 +19,15 @@ spec:
         image: aydintokuslu/counter-app:2.0
         ports:
         - containerPort: 3000
+        # env:
+        #   - name: "host"
+        #     valueFrom:
+        #       configMapKeyRef:
+        #         name: redis-configmap
+        #         key: database_url
         env:
-          - name: "host"
-            valueFrom:
-              configMapKeyRef:
-                name: redis-configmap
-                key: database_url
+            - name: "host"
+              value: "redis-service"
         resources:
             limits:
               memory: 500Mi

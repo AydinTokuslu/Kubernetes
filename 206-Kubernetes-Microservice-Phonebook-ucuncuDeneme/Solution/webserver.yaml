@@ -53,6 +53,7 @@ metadata:
   name: webserver-service
 spec:
   type: NodePort
+  #type: LoadBalancer
   selector:
     app: webserver
   ports:
