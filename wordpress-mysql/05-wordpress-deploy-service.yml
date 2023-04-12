@@ -6,9 +6,9 @@ metadata:
     app: wordpress
 spec:
   ports:
-    - port: 8080
-      targetPort: 8080
-      nodePort: 31004
+    - protocol: TCP
+      port: 80
+      nodePort: 30004
   selector:
     app: wordpress
     tier: frontend
@@ -24,7 +24,7 @@ metadata:
   labels:
     app: wordpress
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: wordpress
@@ -38,23 +38,30 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress:6
+      - image: wordpress:4.8-apache
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: wordpress-mysql
+          valueFrom:
+            configMapKeyRef:
+              name: database-config
+              key: database-host
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: mysql-pass
               key: password
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
         ports:
-        - containerPort: 8080
-          name: wordpress
+          - containerPort: 80
         volumeMounts:
-        - name: wordpress-persistent-storage
+        - name: wordpress-storage
           mountPath: "/var/www/html"
       volumes:
-      - name: wordpress-persistent-storage
+      - name: wordpress-storage
         persistentVolumeClaim:
           claimName: wordpress-persistent-storage
