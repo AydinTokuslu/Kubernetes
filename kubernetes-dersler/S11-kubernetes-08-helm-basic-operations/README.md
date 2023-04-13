@@ -387,6 +387,7 @@ chartmuseum --debug --port=8080 \
   --storage="local" \
   --storage-local-rootdir="./chartstorage"
 ```
+chartmuseum --debug --port=8080 --storage="local" --storage-local-rootdir="./chartstorage"
 
 - Check the repo on your browser. (Don't forget the open port 8080)
 
