@@ -7,8 +7,8 @@ metadata:
     name: mysql-deploy
     app: bookstore-api-app
 spec:
-  replicas: {{ .Values.replicaCount }}
-  selector: 
+  replicas: 1
+  selector:
     matchLabels:
       name: mysql-pod
       app: bookstore-api-app
@@ -20,10 +20,10 @@ spec:
         app: bookstore-api-app
     spec:
       containers:
-      - name: database
-        image: {{ .Values.mysql_image }}
-        ports:
-        - containerPort: 3306
-        envFrom:
-          - secretRef:
-              name: mysecret
+        - name: database
+          image: {{ .Values.mysql_image }}
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - secretRef:
+                name: mysecret

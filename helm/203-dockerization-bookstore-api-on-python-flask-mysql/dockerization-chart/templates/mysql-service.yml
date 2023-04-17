@@ -7,8 +7,9 @@ metadata:
     app: bookstore-api-app
 spec:
   ports:
-  - port: {{ .Values.mysql_service.port }}
+  - port: 3306
     targetPort: {{ .Values.mysql_service.port }}
+  type: {{ .Values.mysql_service.type }}
   selector:
      name: mysql-pod
      app: bookstore-api-app

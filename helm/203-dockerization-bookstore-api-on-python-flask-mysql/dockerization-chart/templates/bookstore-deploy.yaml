@@ -6,8 +6,8 @@ metadata:
     name: bookstore-api-deploy
     app: bookstore-api-app
 spec:
-  replicas: {{ .Values.replicaCount }}
-  selector: 
+  replicas: 1
+  selector:
     matchLabels:
       name: bookstore-api-pod
       app: bookstore-api-app
