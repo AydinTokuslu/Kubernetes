@@ -19,4 +19,4 @@ spec:
       - image: aydintokuslu/simple-webapp:1.0
         name: webapp
         ports:
-          - containerPort: 80
+          - containerPort: 8080

@@ -20,7 +20,7 @@ spec:
         app: resultserver
     spec:
       containers:
-      - image: {{ .Values.webserver_image }}
+      - image: {{ .Values.resultserver_image }}
         name: resultserver13
         ports:
         - containerPort: 80
