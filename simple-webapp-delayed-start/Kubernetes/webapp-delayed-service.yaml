@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-service
+  name: webapp-delayed-service
 spec:
   ports:
   - protocol: TCP
@@ -9,5 +9,5 @@ spec:
     targetPort: 8080
     nodePort: 30100
   selector:
-     app: webapp-deploy
+     app: webapp-delayed
   type: NodePort
