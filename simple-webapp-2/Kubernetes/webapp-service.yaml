@@ -4,10 +4,10 @@ metadata:
   name: webapp-service
 spec:
   selector:
-    app: webapp
+    app: webapp-deployment
   type: NodePort
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort: 30005
+      nodePort: 30015

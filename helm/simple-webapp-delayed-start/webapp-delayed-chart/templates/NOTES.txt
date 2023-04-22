@@ -9,4 +9,4 @@ To learn more about the release, try:
 
 To use own images execute as below:
 
-helm upgrade --install mywebapp webapp-repo/webapp-chart --set webapp_deployment_image=<image-name> --set mysql_deployment_image=<image-name>
+helm upgrade --install {{ .Release.Name }} {{ .Chart.Name }}-repo/{{ .Chart.Name }} --set webapp_deployment_image=<image-name>

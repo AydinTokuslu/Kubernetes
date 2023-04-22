@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp-deployment
+  name: webapp-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-deployment
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: webapp-deployment
+    spec:
+      containers:
+      - image: aydintokuslu/webapp:2.2.3
+        name: webapp
+        env:
+        - name: MYSQL_DATABASE_HOST
+          value: mysql-service
+        - name: MYSQL_DATABASE_USER
+          value: 'db_user'
+        - name: MYSQL_DATABASE_PASSWORD
+          value: 'Passw0rd'
+        - name: MYSQL_DATABASE_DB
+          value: 'employee_db'
+        ports:
+        - containerPort: 8080
