@@ -9,7 +9,6 @@ spec:
   selector:
     matchLabels:
       app: mysql-deployment
-  strategy: {}
   template:
     metadata:
       labels:
