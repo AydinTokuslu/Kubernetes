@@ -12,6 +12,11 @@ resources:
 
 commonLabels:
   department: engineering
+  feature: api 
+
+namespace: debugging
+
+
 
 
 
