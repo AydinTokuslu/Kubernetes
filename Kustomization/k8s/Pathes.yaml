@@ -9,6 +9,9 @@
    - AnnotationSelector 
  - Value: 
 
+# patches: 
+#   - label-patch.yaml
+
 # Json 6902 Patch
 # patches:
 #   - target: 
