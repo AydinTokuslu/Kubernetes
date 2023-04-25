@@ -18,7 +18,7 @@
 #       kind: Deployment 
 #       name: api-deployment 
 #     patch: |- 
-#       - op: replace 
+#       - op: replace/add/remove 
 #         path: /metadata/name
 #         value: web-deployment
     # patch: |- 
