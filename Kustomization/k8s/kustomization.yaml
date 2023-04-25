@@ -10,6 +10,9 @@ resources:
   - api/
   - db/
 
+commonLabels:
+  department: engineering
+
 
 
 
