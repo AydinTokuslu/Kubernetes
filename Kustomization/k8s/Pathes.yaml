@@ -9,7 +9,7 @@
    - AnnotationSelector 
  - Value: 
 
-#Json 6902 Patch
+# Json 6902 Patch
 # patches:
 #   - target: 
 #       kind: Deployment 
@@ -22,3 +22,14 @@
     #   - op: replace 
     #     path: /spec/replicas
     #     value: 5
+
+# strategic merge Patch
+# patches:
+    # patch: |- 
+    # apiVersion: apps/v1
+    # kind: Deployment
+    # metadata: 
+      # name: api-deployment  
+    # spec: 
+      # replicas: 5 
+    
