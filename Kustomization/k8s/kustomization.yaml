@@ -6,9 +6,9 @@ kind: Kustomization
 #   - db/db-depl.yaml
 #   - db/db-service.yaml
 
-# resources: 
-#   - api/
-#   - db/
+resources: 
+  - api/
+  - db/
 
 
 
