@@ -9,7 +9,7 @@
    - AnnotationSelector 
  - Value: 
 
-
+#Json 6902 Patch
 # patches:
 #   - target: 
 #       kind: Deployment 
