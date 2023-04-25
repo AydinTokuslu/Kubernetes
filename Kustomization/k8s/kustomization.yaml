@@ -6,9 +6,13 @@ resources:
   - db/db-depl.yaml
   - db/db-service.yaml
 
+# resources: 
+#   - api/
+#   - db/
 
 
 
-# kustomiza build k8s | kubectl apply -f -
+
+# kustomiza build k8s/ | kubectl apply -f -
 # kubectl apply -k k8s
 # kubectl delete -k k8s
