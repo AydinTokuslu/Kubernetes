@@ -19,7 +19,8 @@ namespace: debugging
 namePrefix: KodeKloud-
 nameSuffix: -web 
 
-
+commonAnnotations:
+  logging: verbose
 
 
 # kustomiza build k8s/ | kubectl apply -f -
