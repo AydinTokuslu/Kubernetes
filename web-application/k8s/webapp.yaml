@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wepapp-deployment
+  labels:
+    app: wepapp
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: wepapp
+  template:
+    metadata:
+      labels:
+        app: wepapp
+    spec:
+      containers:
+        - name: wepapp
+          image: aydintokuslu/webapp-other:1.0.0
+          ports:
+            - containerPort: 8080
+          env:
+          - name: MYSQL_DATABASE_HOST
+            value: mysql-service
+          - name: MYSQL_DATABASE
+            value: "employee_db"
+          - name: MYSQL_USER
+            value: "db_user"
+          - name: MYSQL_PASSWORD
+            value: "Passw0rd"
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: wepapp-service
+spec:
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30100
+  selector:
+     app: wepapp
+  type: NodePort
